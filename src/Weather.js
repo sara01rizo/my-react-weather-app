@@ -3,14 +3,22 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
-    setTemperature(response.data.main.temp);
-    setReady(true);
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      date: "Saturday 20:00",
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
+      city: response.data.name,
+      description: response.data.weather[0].description,
+      iconUrl: "https://",
+    });
   }
-  if (ready) {
+
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         <form>
@@ -32,18 +40,24 @@ export default function Weather() {
             </div>
           </div>
         </form>
-        <h1>Berlin</h1>
+        <h1>{weatherData.city}</h1>
         <ul>
           <li className="weekDay">Saturday</li>
-          <li className="current_Time"></li>
-          <li className="current_Status">Cloudy</li>
+          <li className="current_Time">20:00</li>
+          <li className="current_Status">{weatherData.description}</li>
         </ul>
         <div className="row">
           <div className="col-6">
             <div className="clearfix">
-              <img src="" alt="Cloudy" className="float-left" />
+              <img
+                src={weatherData.iconUrl}
+                alt={weatherData.description}
+                className="float-left"
+              />
               <div className="float-left">
-                <span className="temperature">{Math.round(temperature)}</span>
+                <span className="temperature">
+                  {Math.round(weatherData.temperature)}
+                </span>
                 <span className="unit">ºC</span>
               </div>
             </div>
@@ -51,8 +65,8 @@ export default function Weather() {
           <div className="col-6">
             <ul>
               <li>Precipitation: 15%</li>
-              <li>Humidity: 72%</li>
-              <li>Wind: 13 km/h</li>
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {weatherData.wind} km/h</li>
               <li>See more details..</li>
               <li>See more days</li>
               <li>Live Video</li>
