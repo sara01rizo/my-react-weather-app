@@ -1,20 +1,21 @@
 .Weather {
   font-family: "Poppins", sans-serif;
   border: 1px solid #333;
-  color: rgb(49, 49, 49);
+  color: #ffffff;
   padding: 16px;
   margin: 38px auto;
-  max-width: 600px;
+  max-width: 700px;
+  background: linear-gradient(to top right, #96ff9b, #6baea5);
   border-radius: 4.5px;
 }
 
 .Weather h1 {
   font-family: "Ubuntu", sans-serif;
-  color: #50bfe6;
+  color: #ffffff;
   font-size: 24px;
   font-weight: 100;
   line-height: 29px;
-  margin: 20px 0 0 0;
+  margin: 20px 0 15px 0;
 }
 
 .Weather ul {
@@ -23,8 +24,8 @@
 }
 
 .Weather li {
-  color: #1f1e1e;
-  font-size: 16px;
+  color: #ffffff;
+  font-size: 18px;
   font-weight: 200;
   line-height: 19px;
   list-style: none;
@@ -37,7 +38,7 @@
 }
 
 .Weather .unit {
-  color: rgb(44, 44, 44);
+  color: #ffffff;
   font-size: 16px;
   font-weight: 300;
   position: relative;
@@ -51,4 +52,15 @@
   width: 64px;
   margin-right: 10px;
   height: 64px;
+}
+
+.Weather .button {
+  position: relative;
+  background-color: #50bfe6;
+  margin-bottom: 12px;
+  border: none;
+}
+
+.Weather .button:hover {
+  background-color: #3aa6d4;
 }
